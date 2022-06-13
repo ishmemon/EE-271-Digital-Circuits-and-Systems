@@ -1,3 +1,4 @@
+//Attribution: This file was contributed by the UW Electrical Engineering Faculty.
 // A driver for the 16x16x2 LED display expansion board.
 // Read below for an overview of the ports.
 // IMPORTANT: You do not need to necessarily modify this file. But if you do, be sure you know what you are doing.
