@@ -1,3 +1,4 @@
+//Attribution: This file was contributed by the UW Electrical Engineering Faculty.
 module mux4_1(out, i00, i01, i10, i11, sel0, sel1);
  output logic out;
  input logic i00, i01, i10, i11, sel0, sel1;
