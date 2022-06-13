@@ -1,4 +1,4 @@
-//Attribution: This file is similar to one created by the UW Electrical Engineering Faculty.
+//Attribution: This file was based on a similar file created by the UW Electrical Engineering Faculty.
 module seg7 (bcd, leds); 
  input  logic  [3:0] bcd; 
  output logic  [6:0] leds; 
