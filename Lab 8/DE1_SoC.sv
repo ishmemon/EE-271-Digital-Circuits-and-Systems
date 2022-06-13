@@ -63,12 +63,12 @@ module DE1_SoC (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, GPIO_1,
 	 //assign RST = ~KEY[0];
 	 
 	 /* Standard LED Driver instantiation - set once and 'forget it'. 
-	    See LEDDriver.sv for more info. Do not modify unless you know what you are doing! */
+	     */
 	 LEDDriver Driver (.CLK(SYSTEM_CLOCK), .RST(reset), .EnableCount(1'b1), .RedPixels, .GrnPixels, .GPIO_1);
 	 
 	 
 	 /* LED board test submodule - paints the board with a static pattern.
-	    Replace with your own code driving RedPixels and GrnPixels.
+	  
 		 
 	 	 KEY0      : Reset
 		 =================================================================== */
@@ -85,38 +85,7 @@ module DE1_SoC (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, GPIO_1,
 										  
 							  
 //Logic to find out the computer button press, I need to make KEY3 change to be the computer's press
-	
-	/*logic [3:0] proxy;
 
-	logic [3:0] store; 
-	flop f1(.q(store[0]), .d(~KEY[0]), .clk, .Reset(reset));
-	flop f2(.q(store[1]), .d(~KEY[1]), .clk, .Reset(reset));
-	flop f3(.q(store[2]), .d(~KEY[2]), .clk, .Reset(reset));
-	flop f4(.q(store[3]), .d(~KEY[3]), .clk, .Reset(reset));
-	
-	flop f1_2(.q(proxy[0]), .d(store[0]), .clk, .Reset(reset));
-	flop f2_2(.q(proxy[1]), .d(store[1]), .clk, .Reset(reset));
-	flop f3_2(.q(proxy[2]), .d(store[2]), .clk, .Reset(reset));
-	flop f4_2(.q(proxy[3]), .d(store[3]), .clk, .Reset(reset));*/
-	
-	
-	
-	
-	
-	
-	//logic [1:0] proxy;
-
-	//logic [1:0] store; 
-	//flop f1(.q(store[0]), .d(SW[0]), .clk, .Reset(reset));
-	//flop f2(.q(store[1]), .d(SW[1]), .clk, .Reset(reset));
-	
-	//flop f1_2(.q(proxy[0]), .d(store[0]), .clk, .Reset(reset));
-	//flop f2_2(.q(proxy[1]), .d(store[1]), .clk, .Reset(reset));
-	
-	//logic alternate; 
-	//The first player's turn is determined by the switch being SW1, SW0 being 10 and
-	//the second one's turn is determined by it being 00 (or 11). 
-	//assign alternate = ((~proxy[0]) & proxy[1]);
 	
 	
 	
@@ -126,11 +95,9 @@ module DE1_SoC (CLOCK_50, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, KEY, LEDR, GPIO_1,
 	inputProcess i4(.Clock(SYSTEM_CLOCK), .reset(reset), .L(SW[1]), .R(SW[0]), .nextL(inputKey[5]), .nextR(inputKey[4]));
 	
 	
-	//LED_test test (.clk(SYSTEM_CLOCK), .RST((reset|oneWin)), .RedPixels, .GrnPixels, .inputKey(proxy));
 	LED_test test (.clk(SYSTEM_CLOCK), .RST((reset|oneWin)), .RedPixels, .GrnPixels, .inputKey, .SW(SW[1:0]));
 	
 	
-	//fallingDownRed onePlayer (.RST(reset), .RedPixels, .GrnPixels, .inputKey(proxy));
 	displayWin winner (.clk(SYSTEM_CLOCK), .RST(reset), .RedPixels, .GrnPixels, .outputRed(HEX0), .outputOrange(HEX5), .oneWin);
 	 
 	
