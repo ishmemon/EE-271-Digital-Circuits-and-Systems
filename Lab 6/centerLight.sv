@@ -34,10 +34,7 @@ module centerLight (Clock, Reset, L, R, NL, NR, lightOn);
  
  // Output logic - could also be another always_comb block. 
  assign lightOn = (ps == on); 
- 
- 
- // Your code goes here!!
- //Build FSM 
+
 endmodule 
 
  module centerLight_testbench();  
